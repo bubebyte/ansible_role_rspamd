@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  role_name: rspamd
+  author: Armin Bube
+  description: "Ansible role to install and configure rspamd."
+
+  license: MIT
+
+  min_ansible_version: "2.10"
+
+  github_branch: main
+
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+
+  galaxy_tags:
+    - rspamd
+    - mail
+    - spam
+
+dependencies: []

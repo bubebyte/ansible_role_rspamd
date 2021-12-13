@@ -1,0 +1,8 @@
+---
+rspamd_locald:
+  actions.conf:
+    subject: "***SPAM*** %s"
+  options.inc:
+    enable_test_patterns: false
+
+rspamd_overrided: {}

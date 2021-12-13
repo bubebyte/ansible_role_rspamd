@@ -1,0 +1,23 @@
+---
+- name: Install rspamd
+  ansible.builtin.package:
+    name: "rspamd"
+    state: present
+
+- name: Place configutation into local.d
+  ansible.builtin.template:
+    src: locald.j2
+    dest: "/etc/rspamd/local.d/{{ config_file_name }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart rspamd service
+  loop: "{{ rspamd_locald | list }}"
+  loop_control:
+    loop_var: config_file_name
+
+- name: "Enable and start rspamd"
+  service:
+    name: "rspamd"
+    state: started
+    enabled: true

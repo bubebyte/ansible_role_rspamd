@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+
+{% if rspamd_locald[config_file_name] is mapping %}
+{% for setting in rspamd_locald[config_file_name] %}
+{% if rspamd_locald[config_file_name][setting] is defined %}
+{% if rspamd_locald[config_file_name][setting] is string %}
+{{ setting }} = "{{ rspamd_locald[config_file_name][setting] }}";
+{% else %}
+{{ setting }} = {{ rspamd_locald[config_file_name][setting]|lower }};
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
